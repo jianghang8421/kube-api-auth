@@ -23,10 +23,7 @@ steps:
   commands:
   - "cp -r ./bin/* ./package/"
   when:
-    instance:
-    - drone-publish.rancher.io
     refs:
-    - refs/head/master
     - refs/tags/*
     event:
     - tag
@@ -37,17 +34,14 @@ steps:
   settings:
     context: package/
     dockerfile: package/Dockerfile
-    repo: rancher/kube-api-auth
+    repo: jianghang8421/kube-api-auth
     tag: "${DRONE_TAG}-amd64"
     password:
       from_secret: docker_password
     username:
       from_secret: docker_username
   when:
-    instance:
-    - drone-publish.rancher.io
     refs:
-    - refs/head/master
     - refs/tags/*
     event:
     - tag
@@ -81,10 +75,7 @@ steps:
   commands:
   - "cp -r ./bin/* ./package/"
   when:
-    instance:
-    - drone-publish.rancher.io
     refs:
-    - refs/head/master
     - refs/tags/*
     event:
     - tag
@@ -95,17 +86,14 @@ steps:
   settings:
     context: package/
     dockerfile: package/Dockerfile
-    repo: rancher/kube-api-auth
+    repo: jianghang8421/kube-api-auth
     tag: "${DRONE_TAG}-arm64"
     password:
       from_secret: docker_password
     username:
       from_secret: docker_username
   when:
-    instance:
-    - drone-publish.rancher.io
     refs:
-    - refs/head/master
     - refs/tags/*
     event:
     - tag
@@ -126,8 +114,8 @@ steps:
       from_secret: dockerhub_username
     password:
       from_secret: dockerhub_password
-    target: "rancher/kube-api-auth:${DRONE_TAG}"
-    template: "rancher/kube-api-auth:${DRONE_TAG}-ARCH"
+    target: "jianghang8421/kube-api-auth:${DRONE_TAG}"
+    template: "jianghang8421/kube-api-auth:${DRONE_TAG}-ARCH"
     platforms:
     - linux/amd64
     - linux/arm64
